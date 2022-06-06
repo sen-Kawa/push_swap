@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/06 15:56:06 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:57:12 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	checker(long int nbr)
 {
 	if (nbr > MAX_INT)
 	{
-		printf("Error\n");
+		printf("Error max int\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (nbr < MIN_INT)
 	{
-		printf("Error\n");
+		printf("Error min int\n");
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -36,16 +36,16 @@ int	checker(long int nbr)
 int	numeric_checker(char *arg)
 {
 	int	c;
-//	int	sign;
 
 	c = 0;
-//	sign = 1;
 	while (arg[c])
 	{
+		if (arg[c] == '-' || arg[c] == '+')
+			c++;
 		if (arg[c] > '9' || arg[c] < '0')
 		//	printf("Iteration %c\n", arg[c]);
 		{
-			printf("Error\n");
+			printf("Error non numeric\n");
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 	{
 	//	nbr = atoi(argv[1]);
 	//	checker(atol(argv[i]));	
-		if (numeric_checker(argv[i]))
+		if (numeric_checker(argv[i]) == 0)
 			checker(atol(argv[i]));	
 //		printf("Iteration %s\n", argv[i]);
 		i++;
