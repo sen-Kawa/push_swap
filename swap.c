@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:28:18 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/07 23:39:02 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/07 23:48:12 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	swap_data(int *a, int *b)
 
 void	swap_nodes(t_list *stack)
 {
-	t_list temp;
+	t_list *temp;
 
-	temp = 
+	temp = stack;
+	swap_data(&temp->content, &temp->next->content);
 }
