@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   list_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/07 22:35:19 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/07 21:55:49 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	printing_list(t_list *stack_a)
 {
-	int		i;
-	t_list	*stack_a;
-//	t_list	*stack_b;
+	while (stack_a)
+	{
+		ft_printf("Node: %i\n", stack_a->content);
+		stack_a = stack_a->next;
+	}
+	ft_printf("___\n");
+	ft_printf(" A \n");
+}
 
-	stack_a = NULL;
-//	stack_b = NULL;
+t_list	*creating_list(t_list **stack_a, char **argv)
+{
+	t_list	*new;
+	int		i;
+
 	i = 1;
-	if (argc == 1)
-		return (0);
 	while (argv[i])
 	{
-		if (numeric_checker(argv[i]) && checker(atol(argv[i])))
-			i++;
+		new = ft_lstnew(ft_atoi(argv[i]));
+		ft_lstadd_back(stack_a, new);
+		i++;
 	}
-	if (duplicates_checker(argc, argv))
-	{
-		creating_list(&stack_a, argv);
-		printing_list(stack_a);
-		rotate(&stack_a);
-		printing_list(stack_a);
-	}		
-	return (0);
+	return (*stack_a);
 }

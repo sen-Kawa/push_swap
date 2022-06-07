@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/06 18:53:31 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:02:46 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	duplicates_checker(int argc, char **argv)
 		j = i + 1;
 		while (j < argc)
 		{
-			if ((atoi(argv[i]) == atoi(argv[j])))
+			if ((ft_atoi(argv[i]) == ft_atoi(argv[j])))
 			{
-				printf("Duplicate found!\n");
+				ft_printf("Duplicate found!\n");
 				exit (EXIT_FAILURE);
 			}
 			j++;
@@ -39,12 +39,12 @@ int	checker(long int nbr)
 {
 	if (nbr > MAX_INT)
 	{
-		printf("Error max int\n");
+		ft_printf("Error max int\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (nbr < MIN_INT)
 	{
-		printf("Error min int\n");
+		ft_printf("Error min int\n");
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -62,7 +62,7 @@ int	numeric_checker(char *arg)
 			c++;
 		if (arg[c] > '9' || arg[c] < '0')
 		{
-			printf("Error non numeric\n");
+			ft_printf("Error non numeric\n");
 			exit(EXIT_FAILURE);
 		}
 		else
