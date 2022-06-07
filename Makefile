@@ -6,7 +6,7 @@
 #    By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 18:56:29 by kaheinz           #+#    #+#              #
-#    Updated: 2022/06/07 22:36:06 by kaheinz          ###   ########.fr        #
+#    Updated: 2022/06/07 23:39:31 by kaheinz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 INCLUDE = push_swap.h
 
-SRCS = push_swap.c rotate.c error_handler.c list_handling.c\
+SRCS = push_swap.c swap.c rotate.c error_handler.c list_handling.c\
 
 LIBFT = libft/libft.a
 
