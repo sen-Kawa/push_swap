@@ -6,11 +6,23 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/08 17:38:08 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/08 17:53:04 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	freeing_list(t_list *stack_a)
+{
+	t_list *temp;
+
+	while (stack_a != NULL)
+	{
+		temp = stack_a;
+		stack_a = stack_a->next;
+		free(temp);
+	}
+}
 
 void	init_push_swap(t_ps *push_swap)
 {
@@ -57,7 +69,8 @@ int	main(int argc, char **argv)
 		ft_printf("Pushed b to a is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-	}		
+	}
+	freeing_list(push_swap->stack_a);
 	free(push_swap);
 	return (0);
 }
