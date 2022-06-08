@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/08 17:53:04 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/08 19:06:27 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	freeing_list(t_list *stack_a)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	while (stack_a != NULL)
 	{
@@ -52,23 +52,30 @@ int	main(int argc, char **argv)
 		creating_list(&push_swap->stack_a, argv);
 		ft_printf("List is:\n");
 		printing_list_a(push_swap->stack_a);
-		rotate(&push_swap->stack_a);
+		rotate_a(&push_swap->stack_a);
 		ft_printf("Rotated list is:\n");
 		printing_list_a(push_swap->stack_a);
 		reverse_rotate(&push_swap->stack_a);
 		ft_printf("Reverse rotated list is:\n");
 		printing_list_a(push_swap->stack_a);
-		swap_nodes(push_swap->stack_a);
+		swap_nodes_a(push_swap->stack_a);
 		ft_printf("Swapped list is:\n");
 		printing_list_a(push_swap->stack_a);
 		push_a_b(push_swap);
-		ft_printf("Pushed a to b is:\n");
+		push_a_b(push_swap);
+		ft_printf("Pushed 2 from a to b is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-		push_b_a(push_swap);
+		ss(push_swap);
+		ft_printf("Swapped both lists is:\n");
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+/*		push_b_a(push_swap);
 		ft_printf("Pushed b to a is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
+*/		
+		ss(push_swap);
 	}
 	freeing_list(push_swap->stack_a);
 	free(push_swap);
