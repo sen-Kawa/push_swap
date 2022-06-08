@@ -19,6 +19,12 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+typedef struct push_swap
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+}	t_ps;
+
 int		checker(long int nbr);
 int		numeric_checker(char *arg);
 int		duplicates_checker(int argc, char **argv);

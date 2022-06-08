@@ -23,6 +23,7 @@ void	swap_data(int *a, int *b)
 
 void	swap_nodes(t_list *stack)
 {
+//	if () check for empty list
 	t_list *temp;
 
 	temp = stack;
