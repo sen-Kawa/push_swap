@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 11:50:35 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/11 20:11:43 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct push_swap
 }	t_ps;
 
 //error checkers
-int		checker(long int nbr);
+int		checker_minmax(long int nbr);
 int		numeric_checker(char *arg);
 int		duplicates_checker(int argc, char **argv);
 
@@ -58,5 +58,7 @@ void	freeing_list(t_list *stack_a);
 //pushing
 void	push_a_b(t_ps *push_swap);
 void	push_b_a(t_ps *push_swap);
+
+void	quicksort(t_ps *push_swap);
 
 #endif

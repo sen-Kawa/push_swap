@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/07 12:02:46 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:28:05 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	duplicates_checker(int argc, char **argv)
 	return (1);
 }
 
-int	checker(long int nbr)
+int	checker_minmax(long int nbr)
 {
 	if (nbr > MAX_INT)
 	{

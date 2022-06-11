@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 17:26:12 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/11 22:59:00 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ void	init_push_swap(t_ps *push_swap)
 	push_swap->stack_b = NULL;
 }
 
+void	quicksort(t_ps *push_swap)
+{
+	t_list	*pivot;
+
+	pivot = ft_lstlast(push_swap->stack_a);
+	ft_printf("Pivot is %i\n", *pivot);
+	while (push_swap->stack_a->next != NULL)
+	{
+		if (push_swap->stack_a->content < pivot->content)
+		{
+			push_a_b(push_swap);
+			printing_list_a(push_swap->stack_a);
+			printing_list_b(push_swap->stack_b);
+		}
+		else
+			push_swap->stack_a = push_swap->stack_a->next;
+	}
+	if (pivot->content )
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -44,7 +64,7 @@ int	main(int argc, char **argv)
 		return (0);
 	while (argv[i])
 	{
-		if (numeric_checker(argv[i]) && checker(atol(argv[i])))
+		if (numeric_checker(argv[i]) && checker_minmax(atol(argv[i])))
 			i++;
 	}
 	if (duplicates_checker(argc, argv))
@@ -52,7 +72,8 @@ int	main(int argc, char **argv)
 		creating_list(&push_swap->stack_a, argv);
 		ft_printf("List is:\n");
 		printing_list_a(push_swap->stack_a);
-		rotate_a(&push_swap->stack_a);
+		quicksort(push_swap);
+/*		rotate_a(&push_swap->stack_a);
 		ft_printf("Rotated list is:\n");
 		printing_list_a(push_swap->stack_a);
 		reverse_rotate_a(&push_swap->stack_a);
@@ -74,7 +95,7 @@ int	main(int argc, char **argv)
 		ft_printf("RRR is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-/*		ss(push_swap);
+		ss(push_swap);
 		ft_printf("Swapped both lists is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
