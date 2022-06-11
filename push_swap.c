@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/08 19:06:27 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:26:12 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 		rotate_a(&push_swap->stack_a);
 		ft_printf("Rotated list is:\n");
 		printing_list_a(push_swap->stack_a);
-		reverse_rotate(&push_swap->stack_a);
+		reverse_rotate_a(&push_swap->stack_a);
 		ft_printf("Reverse rotated list is:\n");
 		printing_list_a(push_swap->stack_a);
 		swap_nodes_a(push_swap->stack_a);
@@ -66,16 +66,34 @@ int	main(int argc, char **argv)
 		ft_printf("Pushed 2 from a to b is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-		ss(push_swap);
+		rr(push_swap);
+		ft_printf("RR is:\n");
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+		rrr(push_swap);
+		ft_printf("RRR is:\n");
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+/*		ss(push_swap);
 		ft_printf("Swapped both lists is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-/*		push_b_a(push_swap);
+		rotate_b(&push_swap->stack_b);
+		ft_printf("Rotated b list is:\n");
+		printing_list_b(push_swap->stack_b);
+		reverse_rotate_b(&push_swap->stack_b);
+		ft_printf("Reverse rotated list is:\n");
+		printing_list_b(push_swap->stack_b);
+		swap_nodes_b(push_swap->stack_b);
+		ft_printf("Swapped list is:\n");
+		printing_list_b(push_swap->stack_b);
+		push_b_a(push_swap);
 		ft_printf("Pushed b to a is:\n");
 		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
-*/		
-		ss(push_swap);
+		swap_nodes_b(push_swap->stack_b);
+		ft_printf("Swapped list is:\n");
+		printing_list_b(push_swap->stack_b);*/
 	}
 	freeing_list(push_swap->stack_a);
 	free(push_swap);

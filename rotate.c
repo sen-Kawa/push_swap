@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/08 19:30:10 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/11 17:06:23 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	rr(t_ps *push_swap)
 		return ;
 	else
 	{
-		rotate_a(push_swap->stack_a);
-		rotate_b(push_swap->stack_b);
+		rotate_a(&push_swap->stack_a);
+		rotate_b(&push_swap->stack_b);
 	}
 }
