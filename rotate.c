@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 17:06:23 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/12 16:44:25 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	rotate_a(t_list **stack)
 	*stack = first->next;
 	first->next = NULL;
 	last->next = first;
+	ft_printf("ra\n");
 }
 
 void	rotate_b(t_list **stack)
@@ -42,6 +43,7 @@ void	rotate_b(t_list **stack)
 	*stack = first->next;
 	first->next = NULL;
 	last->next = first;
+	ft_printf("rb\n");
 }
 
 void	rr(t_ps *push_swap)
@@ -53,5 +55,6 @@ void	rr(t_ps *push_swap)
 	{
 		rotate_a(&push_swap->stack_a);
 		rotate_b(&push_swap->stack_b);
+		ft_printf("rr\n");
 	}
 }

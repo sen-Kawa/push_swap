@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 22:59:00 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/12 21:36:40 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,70 @@ void	init_push_swap(t_ps *push_swap)
 
 void	quicksort(t_ps *push_swap)
 {
-	t_list	*pivot;
-
-	pivot = ft_lstlast(push_swap->stack_a);
-	ft_printf("Pivot is %i\n", *pivot);
-	while (push_swap->stack_a->next != NULL)
+	pivot_division(push_swap);
+	printf("a %i\n", push_swap->stack_a->content);
+	printf("b %i\n", push_swap->stack_b->content);
+	printing_list_a(push_swap->stack_a);
+	printing_list_b(push_swap->stack_b);
+	if ((push_swap->stack_a->content > push_swap->stack_a->next->content) && (push_swap->stack_b->content < push_swap->stack_b->next->content))
 	{
-		if (push_swap->stack_a->content < pivot->content)
+//		write(1, "he\n", 3);
+		ss(push_swap);
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+	}
+	else if ((push_swap->stack_a->content > push_swap->pivot_a->content) && (push_swap->stack_b->content < push_swap->pivot_b->content))
+	{
+//		write(1, "he\n", 3);
+		rr(push_swap);
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+	}
+}
+
+void	pivot_division(t_ps *push_swap)
+{
+//	t_list	*pivot_a;
+	int	size;
+	int	i;
+
+	i = 0;
+	size = ft_lstsize(push_swap->stack_a) / 2;
+	ft_printf("size %i", size);
+	push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
+	push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+	while (push_swap->stack_a->next != NULL && i <= size)
+	{
+		if (push_swap->stack_a->content < push_swap->pivot_a->content)
 		{
 			push_a_b(push_swap);
-			printing_list_a(push_swap->stack_a);
-			printing_list_b(push_swap->stack_b);
+//			printing_list_a(push_swap->stack_a);
+//			printing_list_b(push_swap->stack_b);
 		}
-		else
-			push_swap->stack_a = push_swap->stack_a->next;
+/*		else if(push_swap->stack_a->content > push_swap->pivot_a->content 
+			&& push_swap->stack_b->content < push_swap->pivot_b->content)
+		{
+			write(1, "test2\n", 5);
+			rr(push_swap);
+			push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
+//			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+			ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
+		}*/
+		else if(push_swap->stack_a->content > push_swap->pivot_a->content)
+		{
+			rotate_a(&push_swap->stack_a);
+			push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
+			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+	//		ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
+		}
+		i++;
 	}
-	if (pivot->content )
+//	printf("%i", push_swap->stack_a->content);
+	push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+//	printing_list_a(push_swap->stack_a);
+//	ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
+//	ft_printf("Pivot b is %i\n", *push_swap->pivot_b);
+//	printing_list_b(push_swap->stack_b);
 }
 
 int	main(int argc, char **argv)

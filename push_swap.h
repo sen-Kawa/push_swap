@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 20:11:43 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/12 16:10:20 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct push_swap
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*pivot_a;
+	t_list	*pivot_b;
 }	t_ps;
 
 //error checkers
@@ -59,6 +61,8 @@ void	freeing_list(t_list *stack_a);
 void	push_a_b(t_ps *push_swap);
 void	push_b_a(t_ps *push_swap);
 
+//quicksort algorithm
+void	pivot_division(t_ps *push_swap);
 void	quicksort(t_ps *push_swap);
 
 #endif
