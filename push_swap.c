@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/12 21:36:40 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/12 21:49:50 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ void	quicksort(t_ps *push_swap)
 		printing_list_b(push_swap->stack_b);
 	}
 	else if ((push_swap->stack_a->content > push_swap->pivot_a->content) && (push_swap->stack_b->content < push_swap->pivot_b->content))
+	{
+//		write(1, "he\n", 3);
+		rr(push_swap);
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+	}
+	else if ((push_swap->stack_a->content < push_swap->pivot_a->content) && (push_swap->stack_b->content > push_swap->pivot_b->content))
 	{
 //		write(1, "he\n", 3);
 		rr(push_swap);
