@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:28:18 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/14 21:46:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 23:01:03 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ss(t_ps *push_swap)
 	{
 		swap_nodes_a(push_swap->stack_a);
 		swap_nodes_b(push_swap->stack_b);
-		ft_printf("ss\n");
+		write(1, "ss\n", 3);
 	}	
 	else
 		return ;

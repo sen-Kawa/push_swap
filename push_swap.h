@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/14 22:12:33 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 23:29:02 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct push_swap
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*pivot_a;
+	int	pivot_a;
 	t_list	*pivot_b;
 }	t_ps;
 
