@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/13 13:28:52 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 22:46:56 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,108 +30,104 @@ void	init_push_swap(t_ps *push_swap)
 	push_swap->stack_b = NULL;
 }
 
+int	list_a_sorted(t_ps *push_swap, int lenlst)
+{
+	t_list	*temp;
+	int	i;
+
+	i = 0;
+	temp = push_swap->stack_a;
+	while (temp && temp->next && temp->content < temp->next->content)
+	{
+		temp = temp->next;
+		i++;
+	}
+	i++;
+	if (i == lenlst)
+		return (1);
+	else
+		return (0);
+}
+
+
+int	list_b_sorted(t_ps *push_swap, int lenlst)
+{
+	t_list	*temp;
+	int	i;
+
+	i = 0;
+	temp = push_swap->stack_b;
+	while (temp && temp->next && temp->content > temp->next->content)
+	{
+		temp = temp->next;
+		i++;
+	}
+	i++;
+	if (i == lenlst)
+		return (1);
+	else
+		return (0);
+}
+
 void	quicksort(t_ps *push_swap)
 {
-	pivot_division(push_swap);
-	printf("a %i\n", push_swap->stack_a->content);
-	printf("b %i\n", push_swap->stack_b->content);
 	printing_list_a(push_swap->stack_a);
 	printing_list_b(push_swap->stack_b);
 	pivot_division(push_swap);
 	printing_list_a(push_swap->stack_a);
 	printing_list_b(push_swap->stack_b);
-	while (push_swap->stack_b)
-		push_b_a(push_swap);
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
-
-/*	if ((push_swap->stack_a->content > push_swap->stack_a->next->content) && (push_swap->stack_b->content < push_swap->stack_b->next->content))
-	{
-//		write(1, "he\n", 3);
-		ss(push_swap);
-		printing_list_a(push_swap->stack_a);
-		printing_list_b(push_swap->stack_b);
-	}
-	else
-		ft_printf("bye");
-	else if ((push_swap->stack_a->content > push_swap->pivot_a->content) && (push_swap->stack_b->content < push_swap->pivot_b->content))
-	{
-//		write(1, "he\n", 3);
-		rr(push_swap);
-		printing_list_a(push_swap->stack_a);
-		printing_list_b(push_swap->stack_b);
-	}
-	else if ((push_swap->stack_a->content < push_swap->pivot_a->content) && (push_swap->stack_b->content > push_swap->pivot_b->content))
-	{
-//		write(1, "he\n", 3);
-		rr(push_swap);
-		printing_list_a(push_swap->stack_a);
-		printing_list_b(push_swap->stack_b);
-	}*/
 }
 
 void	pivot_division(t_ps *push_swap)
 {
-//	t_list	*pivot_a;
-//	int	size;
-//	int	i;
-
-//	i = 0;
-//	size = ft_lstsize(push_swap->stack_a) / 2;
-//	ft_printf("size %i", size);
-	push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
-//	i = push_swap->pivot_a->content;
-//	ft_printf("i is %i", i);
-//	push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-//	ft_printf("Pivot b is %i\n", *push_swap->pivot_b);
+	int	len_a;
+	int	len_b;
+	
 	while (push_swap->stack_a->next != NULL && push_swap->stack_a->content != push_swap->pivot_a->content)
 	{
 		if (push_swap->stack_a->content < push_swap->pivot_a->content)
 		{
 			push_a_b(push_swap);
-//			printing_list_a(push_swap->stack_a);
-//			printing_list_b(push_swap->stack_b);
 			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_a->next->content)
+				ss(push_swap);
+			else if (push_swap->stack_a->content > push_swap->stack_a->next->content)
+				swap_nodes_a(push_swap->stack_a);
+			else if (push_swap->stack_b->next->content && push_swap->stack_b->content < push_swap->stack_b->next->content)
+				swap_nodes_b(push_swap->stack_b);
 		}
-//		else if(push_swap->stack_a->content > push_swap->pivot_a->content 
-//			&& 
-//		{
-//			write(1, "test2\n", 5);
-//			rr(push_swap);
-//			push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
-//			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-//			ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
-//		}
-		else 
-//			if (push_swap->stack_a->content > push_swap->pivot_a->content)
+		else if (push_swap->stack_a->content > push_swap->pivot_a->content)
 		{
 
-//			write(1, "test2\n", 5);
-//			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-//			ft_printf("Pivot b is %i\n", *push_swap->pivot_b);
 			if((push_swap->pivot_b) && push_swap->stack_b->content < push_swap->pivot_b->content)
 				rr(push_swap);
 			else 
+			{
 				rotate_a(&push_swap->stack_a);
-//			printing_list_a(push_swap->stack_a);
-//			printing_list_b(push_swap->stack_b);
-		//	push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
-		//	push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-	//		ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
+				write(1, "ra\n", 3);
+			}
 		}
-//		i++;
 	}
-//	printf("%i", push_swap->stack_a->content);
-//	push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-//	printing_list_a(push_swap->stack_a);
-//	ft_printf("Pivot a is %i\n", *push_swap->pivot_a);
-//	ft_printf("Pivot b is %i\n", *push_swap->pivot_b);
-//	printing_list_b(push_swap->stack_b);
+
+	printing_list_a(push_swap->stack_a);
+	printing_list_b(push_swap->stack_b);
+	sleep(1);
+	len_a = ft_lstsize(push_swap->stack_a);
+	len_b = ft_lstsize(push_swap->stack_b);
+	if (list_a_sorted(push_swap, len_a) && list_b_sorted(push_swap, len_b))
+		while (push_swap->stack_b)
+			push_b_a(push_swap);
+	else
+	{
+		push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
+		pivot_division(push_swap);
+	}
 }
 
 int	main(int argc, char **argv)
 {
 	int		i;
+	int		lenlst;
 	t_ps	*push_swap;
 
 	push_swap = malloc(sizeof(t_ps));
@@ -149,9 +145,16 @@ int	main(int argc, char **argv)
 	if (duplicates_checker(argc, argv))
 	{
 		creating_list(&push_swap->stack_a, argv);
-		ft_printf("List is:\n");
-		printing_list_a(push_swap->stack_a);
-		quicksort(push_swap);
+		lenlst = ft_lstsize(push_swap->stack_a);
+		push_swap->pivot_a = ft_lstlast(push_swap->stack_a);
+//		ft_printf("List is:\n");
+//		printing_list_a(push_swap->stack_a);
+		if (!list_a_sorted(push_swap, lenlst))
+			quicksort(push_swap);
+//			write(1, "not sorted", 9);
+		else
+			write(1, "sorted", 6);
+//			return (0);
 /*		rotate_a(&push_swap->stack_a);
 		ft_printf("Rotated list is:\n");
 		printing_list_a(push_swap->stack_a);

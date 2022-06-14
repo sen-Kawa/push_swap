@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:28:18 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/12 17:34:58 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 21:46:47 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	swap_nodes_a(t_list *stack)
 	{
 		temp = stack;
 		swap_data(&temp->content, &temp->next->content);
-		ft_printf("sa\n");
 	}
 	else
 		return ;
@@ -43,7 +42,6 @@ void	swap_nodes_b(t_list *stack)
 	{
 		temp = stack;
 		swap_data(&temp->content, &temp->next->content);
-		ft_printf("sb\n");
 	}
 	else
 		return ;

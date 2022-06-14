@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/11 17:09:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 22:22:49 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	rrr(t_ps *push_swap)
 	{
 		reverse_rotate_a(&push_swap->stack_a);
 		reverse_rotate_b(&push_swap->stack_b);
+		ft_printf("rrr\n");
 	}
 }

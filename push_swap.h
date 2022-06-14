@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/12 16:10:20 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/14 22:12:33 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ void	push_b_a(t_ps *push_swap);
 //quicksort algorithm
 void	pivot_division(t_ps *push_swap);
 void	quicksort(t_ps *push_swap);
+int	list_a_sorted(t_ps *push_swap, int lenlst);
+int	list_b_sorted(t_ps *push_swap, int lenlst);
 
 #endif
