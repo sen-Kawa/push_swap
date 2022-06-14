@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/14 23:57:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 00:05:40 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,8 @@ int	main(int argc, char **argv)
 		if (!list_a_sorted(push_swap, lenlst))
 			quicksort(push_swap);
 //			write(1, "not sorted", 9);
-		else
-			write(1, "sorted", 6);
+//		else
+//			write(1, "sorted", 6);
 //			return (0);
 /*		rotate_a(&push_swap->stack_a);
 		ft_printf("Rotated list is:\n");
