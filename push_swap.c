@@ -71,11 +71,11 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 
 void	quicksort(t_ps *push_swap)
 {
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+	//printing_list_a(push_swap->stack_a);
+//	printing_list_b(push_swap->stack_b);
 	pivot_division(push_swap);
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+//	printing_list_a(push_swap->stack_a);
+//	printing_list_b(push_swap->stack_b);
 }
 
 void	pivot_division(t_ps *push_swap)
@@ -90,7 +90,7 @@ void	pivot_division(t_ps *push_swap)
 	{
 		if (push_swap->stack_a->content < push_swap->pivot_a)
 		{
-			write(1, "this", 4);
+			//write(1, "this", 4);
 			push_a_b(push_swap);
 			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
 			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
@@ -123,9 +123,9 @@ void	pivot_division(t_ps *push_swap)
 			push_swap->pivot_a = ft_lstlast(push_swap->stack_a)->content;
 		len_a = ft_lstsize(push_swap->stack_a);
 		len_b = ft_lstsize(push_swap->stack_b);
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
-	sleep(1);
+//	printing_list_a(push_swap->stack_a);
+//	printing_list_b(push_swap->stack_b);
+//	sleep(1);
 	}
 
 	len_a = ft_lstsize(push_swap->stack_a);
@@ -157,7 +157,7 @@ void	pivot_division(t_ps *push_swap)
 				swap_nodes_b(push_swap->stack_b);
 			if (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 			{
-				write(1, "here", 4);
+				//write(1, "here", 4);
 				pivot_division(push_swap);
 			}
 			push_b_a(push_swap);
