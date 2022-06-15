@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 13:45:32 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 13:47:00 by kaheinz          ###   ########.fr       */
 /*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -72,11 +72,11 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 
 void	quicksort(t_ps *push_swap)
 {
-//	printing_list_a(push_swap->stack_a);
-//	printing_list_b(push_swap->stack_b);
+	printing_list_a(push_swap->stack_a);
+	printing_list_b(push_swap->stack_b);
 	pivot_division(push_swap);
-//	printing_list_a(push_swap->stack_a);
-//	printing_list_b(push_swap->stack_b);
+	printing_list_a(push_swap->stack_a);
+	printing_list_b(push_swap->stack_b);
 }
 
 void	pivot_division(t_ps *push_swap)
@@ -99,7 +99,7 @@ void	pivot_division(t_ps *push_swap)
 				reverse_rotate_b(&push_swap->stack_b);
 				write(1, "rrb\n", 3r;
 			}*/
-		printf("PIVOT B %i\n", push_swap->pivot_b->content);
+//		printf("PIVOT B %i\n", push_swap->pivot_b->content);
 			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
 				ss(push_swap);
 			else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
@@ -195,8 +195,8 @@ int	main(int argc, char **argv)
 		creating_list(&push_swap->stack_a, argv);
 		lenlst = ft_lstsize(push_swap->stack_a);
 		push_swap->pivot_a = ft_lstlast(push_swap->stack_a)->content;
-//		ft_printf("List is:\n");
-//		printing_list_a(push_swap->stack_a);
+		ft_printf("List is:\n");
+		printing_list_a(push_swap->stack_a);
 		if (!list_a_sorted(push_swap, lenlst))
 			quicksort(push_swap);
 //			write(1, "not sorted", 9);
