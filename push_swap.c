@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 02:18:02 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 02:26:32 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	pivot_division(t_ps *push_swap)
 				write(1, "sb\n", 3);
 			}
 		}
-		else if (push_swap->stack_a->content > push_swap->pivot_a)
+		if (push_swap->stack_a->content > push_swap->pivot_a)
 		{
 
 			if((push_swap->pivot_b) && push_swap->stack_b->content < push_swap->pivot_b->content)
