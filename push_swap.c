@@ -6,10 +6,10 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 12:49:16 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 12:52:14 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+.
 #include "push_swap.h"
 
 void	freeing_list(t_list *stack_a)
