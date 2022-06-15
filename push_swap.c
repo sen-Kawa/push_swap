@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 02:51:50 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 12:49:16 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 
 void	quicksort(t_ps *push_swap)
 {
-	//printing_list_a(push_swap->stack_a);
+//	printing_list_a(push_swap->stack_a);
 //	printing_list_b(push_swap->stack_b);
 	pivot_division(push_swap);
 //	printing_list_a(push_swap->stack_a);
@@ -93,6 +93,12 @@ void	pivot_division(t_ps *push_swap)
 			//write(1, "this", 4);
 			push_a_b(push_swap);
 			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+/*		if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->pivot_b->content)
+			{
+				reverse_rotate_b(&push_swap->stack_b);
+				write(1, "rrb\n", 3r;
+			}*/
+//			printf("PIVOT B %i\n", push_swap->pivot_b->content);
 			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
 				ss(push_swap);
 			else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
