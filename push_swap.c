@@ -6,7 +6,11 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/06/15 13:38:00 by kaheinz          ###   ########.fr       */
+=======
+/*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
+>>>>>>> dc001f633987c5273412ccf92e3e61f624dd1b60
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +102,7 @@ void	pivot_division(t_ps *push_swap)
 				reverse_rotate_b(&push_swap->stack_b);
 				write(1, "rrb\n", 3r;
 			}*/
-//			printf("PIVOT B %i\n", push_swap->pivot_b->content);
+		printf("PIVOT B %i\n", push_swap->pivot_b->content);
 			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
 				ss(push_swap);
 			else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
