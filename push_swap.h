@@ -62,7 +62,9 @@ void	push_a_b(t_ps *push_swap);
 void	push_b_a(t_ps *push_swap);
 
 //quicksort algorithm
-void	pivot_division(t_ps *push_swap);
+void	pivot_division_five(t_ps *push_swap);
+void	pivot_division_mid(t_ps *push_swap);
+//void	pivot_division_gran(t_ps *push_swap);
 void	quicksort(t_ps *push_swap);
 int	list_a_sorted(t_ps *push_swap, int lenlst);
 int	list_b_sorted(t_ps *push_swap, int lenlst);
