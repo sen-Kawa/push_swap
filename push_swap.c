@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 02:26:32 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/15 02:51:50 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,21 @@ void	pivot_division(t_ps *push_swap)
 		while (push_swap->stack_b)
 		{
 			if (push_swap->stack_b->content > push_swap->stack_b->next->content)
+			{
 				push_b_a(push_swap);
+				if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+					ss(push_swap);
+				else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
+				{
+					swap_nodes_a(push_swap->stack_a);
+					write(1, "sa\n", 3);
+				}
+				else if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+				{
+					swap_nodes_b(push_swap->stack_b);
+					write(1, "sb\n", 3);
+				}
+			}
 			else if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
 				swap_nodes_b(push_swap->stack_b);
 			if (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
