@@ -72,8 +72,8 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 
 void	quicksort(t_ps *push_swap)
 {
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+	// printing_list_a(push_swap->stack_a);
+	// printing_list_b(push_swap->stack_b);
 	pivot_division(push_swap);
 	printing_list_a(push_swap->stack_a);
 	printing_list_b(push_swap->stack_b);
@@ -89,40 +89,68 @@ void	pivot_division(t_ps *push_swap)
 	//while (push_swap->stack_a && push_swap->stack_a->content != push_swap->pivot_a->content)
 	while (!list_a_sorted(push_swap, len_a) || !list_b_sorted(push_swap, len_b))
 	{
-		if (push_swap->stack_a->content < push_swap->pivot_a)
+		if (push_swap->pivot_a < push_swap->stack_a->content && push_swap->stack_a->content < push_swap->stack_a->next->content)
+		{					
+			reverse_rotate_a(&push_swap->stack_a);
+			write(1, "rra\n", 4);
+			if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+				break ;
+		}
+		if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
 		{
-			//write(1, "this", 4);
-			push_a_b(push_swap);
-			push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
-/*		if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->pivot_b->content)
-			{
-				reverse_rotate_b(&push_swap->stack_b);
-				write(1, "rrb\n", 3r;
-			}*/
-//		printf("PIVOT B %i\n", push_swap->pivot_b->content);
-			if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
-				ss(push_swap);
-			else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
+			rotate_a(&push_swap->stack_a);
+			write(1, "ra\n", 3);
+			if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+				break ;
+		}
+		if (push_swap->stack_a->content > push_swap->stack_a->next->content)
 			{
 				swap_nodes_a(push_swap->stack_a);
 				write(1, "sa\n", 3);
+				if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+					break ;
 			}
-			else if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
-			{
-				swap_nodes_b(push_swap->stack_b);
-				write(1, "sb\n", 3);
-			}
+		if (push_swap->stack_a->content < push_swap->pivot_a)
+		{
+			if (push_swap->stack_a->content < push_swap->stack_a->next->content)
+				{
+					push_a_b(push_swap);
+					push_swap->pivot_b = ft_lstlast(push_swap->stack_b);
+				}
+			if (push_swap->stack_a->content > push_swap->stack_a->next->content)
+				{
+					swap_nodes_a(push_swap->stack_a);
+					write(1, "sa\n", 3);
+				}
+			// if (push_swap->stack_b->next && push_swap->stack_b->content < push_swap->pivot_b->content)
+			// {
+			// 	reverse_rotate_b(&push_swap->stack_b);
+			// 	write(1, "rrb\n", 3);
+			// }
 		}
 		if (push_swap->stack_a->content > push_swap->pivot_a)
 		{
-
-			if((push_swap->pivot_b) && push_swap->stack_b->content < push_swap->pivot_b->content)
-				rr(push_swap);
-			else 
+			if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
 			{
 				rotate_a(&push_swap->stack_a);
 				write(1, "ra\n", 3);
 			}
+			// if((push_swap->pivot_b) && push_swap->stack_b->content < push_swap->pivot_b->content)
+			// 	rr(push_swap);
+		}
+
+//		printf("PIVOT B %i\n", push_swap->pivot_b->content);
+		if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+			ss(push_swap);
+		else if (push_swap->stack_a->next && push_swap->stack_a->content > push_swap->stack_a->next->content)
+		{
+			swap_nodes_a(push_swap->stack_a);
+			write(1, "sa\n", 3);
+		}
+		else if (push_swap->stack_b && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+		{
+			swap_nodes_b(push_swap->stack_b);
+			write(1, "sb\n", 3);
 		}
 		if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 			break ;
@@ -144,7 +172,7 @@ void	pivot_division(t_ps *push_swap)
 	{
 		while (push_swap->stack_b)
 		{
-			if (push_swap->stack_b->content > push_swap->stack_b->next->content)
+			if (push_swap->stack_b->next && push_swap->stack_b->content > push_swap->stack_b->next->content)
 			{
 				push_b_a(push_swap);
 				if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
@@ -195,8 +223,8 @@ int	main(int argc, char **argv)
 		creating_list(&push_swap->stack_a, argv);
 		lenlst = ft_lstsize(push_swap->stack_a);
 		push_swap->pivot_a = ft_lstlast(push_swap->stack_a)->content;
-		ft_printf("List is:\n");
-		printing_list_a(push_swap->stack_a);
+		// ft_printf("List is:\n");
+		// printing_list_a(push_swap->stack_a);
 		if (!list_a_sorted(push_swap, lenlst))
 			quicksort(push_swap);
 //			write(1, "not sorted", 9);

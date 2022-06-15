@@ -22,7 +22,7 @@ OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -g
 
 $(NAME): $(OBJS)
 	make -C libft/
