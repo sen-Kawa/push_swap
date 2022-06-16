@@ -92,21 +92,56 @@ void	pivot_division_mid(t_ps *push_swap, int half)
 	int	median;
 
 	median = (push_swap->min + push_swap->max) / 2;
-	
 
-	while (push_swap->stack_a)
-	{
-		if (push_swap->stack_b && push_swap->stack_b->next)
-			check_combined(push_swap);
-		if (push_swap->stack_a->content < median)
-			// smaller_than_median(push_swap);
-			push_a_b(push_swap);
+	if (list_a_sorted && !push_swap->stack_b)
+		return ;	
+	if (push_swap->stack_a->content < median)
+			{// smaller_than_median(push_swap);
+				push_a_b(push_swap);
+				if (push_swap->stack_b && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+				{
+						swap_nodes_b(push_swap->stack_b);
+						write(1, "sb\n", 3);
+				}
+			}
+		if (ft_lstlast(push_swap->stack_a)->content < median)
+			{
+				reverse_rotate_a(&push_swap->stack_a);
+				write(1, "rra\n", 4);
+				push_a_b(push_swap);
+				if (push_swap->stack_b && push_swap->stack_b->next && push_swap->stack_b->content < push_swap->stack_b->next->content)
+				{
+						swap_nodes_b(push_swap->stack_b);
+						write(1, "sb\n", 3);
+				}
+			}
 		if (push_swap->stack_a->content > median)
 			bigger_than_median(push_swap);
-		if (ft_lstsize(push_swap->stack_a) == half)
+		if (ft_lstsize(push_swap->stack_a) == half - 1)
 			break ;
 	}
-	printing_list_a(push_swap->stack_a);
+		printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
+	while (ft_lstlast(push_swap->stack_a)->content != push_swap->max)
+	{
+		// if (push_swap->stack_a->content < median)
+		// 	push_a_b(push_swap);
+		// if (push_swap->stack_a->content > push_swap->stack_a->next->content)
+		// {
+		// 	swap_nodes_a(push_swap->stack_a);
+		// 	write(1, "sa\n", 3);
+		// }
+		if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
+		{
+			rotate_a(&push_swap->stack_a);
+			write(1, "ra\n", 3);
+		}
+		else 
+		{
+			push_a_b(push_swap);
+		}
+	}
+		printing_list_a(push_swap->stack_a);
 		printing_list_b(push_swap->stack_b);
 }
 
@@ -122,22 +157,24 @@ void	check_combined(t_ps *push_swap)
 
 void	bigger_than_median(t_ps *push_swap)
 {
-	if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
-		{
-			rotate_a(&push_swap->stack_a);
-			write(1, "ra\n", 3);
-		}
+	// if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
+	// 	{
+	// 		rotate_a(&push_swap->stack_a);
+	// 		write(1, "ra\n", 3);
+	// 	}
 	// else if (push_swap->stack_a->content > push_swap->stack_a->next->content)
 	// 	{
 	// 		rotate_a(&push_swap->stack_a);
 	// 		write(1, "ra\n", 3);
 	// 	}
-	else 
-		{
-			swap_nodes_a(push_swap->stack_a);
-			write(1, "sa\n", 3);
-			sleep(1);
-		}
+	// else 
+	// 	{
+	// 		swap_nodes_a(push_swap->stack_a);
+	// 		write(1, "sa\n", 3);
+	// 		sleep(1);
+	// 	}
+	rotate_a(&push_swap->stack_a);
+	write(1, "ra\n", 3);
 }
 
 // void	smaller_than_median(t_ps *push_swap)
