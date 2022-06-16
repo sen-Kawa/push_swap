@@ -66,11 +66,11 @@ void	push_b_a(t_ps *push_swap);
 
 //quicksort algorithm
 void	pivot_division_five(t_ps *push_swap);
-void	pivot_division_mid(t_ps *push_swap, int half);
+void	pivot_division_mid(t_ps *push_swap, int half, int median);
 void	bigger_than_median(t_ps *push_swap);
-// void	smaller_than_median(t_ps *push_swap);
-void	check_combined(t_ps *push_swap);
-
+void	smaller_than_median(t_ps *push_swap);
+// void	check_combined(t_ps *push_swap);
+void	partial_sorting(t_ps *push_swap, int half, int median);
 
 //void	pivot_division_gran(t_ps *push_swap);
 void	quicksort(t_ps *push_swap);
