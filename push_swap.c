@@ -72,32 +72,91 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 
 void	quicksort(t_ps *push_swap)
 {
+	int	half;
+
+	half = ft_lstsize(push_swap->stack_a) / 2;
 	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
 	if (ft_lstsize(push_swap->stack_a) <= 5)
 		pivot_division_five(push_swap);
 	else if (ft_lstsize(push_swap->stack_a) <= 100)
-		pivot_division_mid(push_swap);
+	{
+		pivot_division_mid(push_swap, half);
+	}
 	//else if
 	//	pivot_division_gran(push_swap);
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+	//printing_list(push_swap);
 }
 
-void	pivot_division_mid(t_ps *push_swap)
+void	pivot_division_mid(t_ps *push_swap, int half)
 {
-	int	half;
-	int	counter;
+	int	median;
 
-	counter = 0;
-	half = ft_lstsize(push_swap->stack_a) / 2;
-	while (counter <= half)
+	median = (push_swap->min + push_swap->max) / 2;
+	
+
+	while (push_swap->stack_a)
 	{
-		push_a_b(push_swap);
-		counter++;
+		if (push_swap->stack_b && push_swap->stack_b->next)
+			check_combined(push_swap);
+		if (push_swap->stack_a->content < median)
+			// smaller_than_median(push_swap);
+			push_a_b(push_swap);
+		if (push_swap->stack_a->content > median)
+			bigger_than_median(push_swap);
+		if (ft_lstsize(push_swap->stack_a) == half)
+			break ;
 	}
-
+	printing_list_a(push_swap->stack_a);
+		printing_list_b(push_swap->stack_b);
 }
+
+void	check_combined(t_ps *push_swap)
+{
+	if (push_swap->stack_a->content > push_swap->stack_a->next->content && push_swap->stack_b->content < push_swap->stack_b->next->content)
+		ss(push_swap);
+	// if (ft_lstlast(push_swap->stack_b)->content > push_swap->stack_b->content && ft_lstlast(push_swap->stack_a)->content < push_swap->stack_a->content)
+	// 	rrr(push_swap);
+	// if (push_swap->stack_a->content  > ft_lstlast(push_swap->stack_a)->content && push_swap->stack_b->content  < ft_lstlast(push_swap->stack_a)->content)
+	// 	rrr(push_swap);
+}
+
+void	bigger_than_median(t_ps *push_swap)
+{
+	if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
+		{
+			rotate_a(&push_swap->stack_a);
+			write(1, "ra\n", 3);
+		}
+	// else if (push_swap->stack_a->content > push_swap->stack_a->next->content)
+	// 	{
+	// 		rotate_a(&push_swap->stack_a);
+	// 		write(1, "ra\n", 3);
+	// 	}
+	else 
+		{
+			swap_nodes_a(push_swap->stack_a);
+			write(1, "sa\n", 3);
+			sleep(1);
+		}
+}
+
+// void	smaller_than_median(t_ps *push_swap)
+// {
+// 	if (ft_lstlast(push_swap->stack_a)->content < push_swap->stack_a->content)
+// 			{
+// 				reverse_rotate_a(&push_swap->stack_a);
+// 				write(1, "rra\n", 4);
+// 				push_a_b(push_swap);
+// 			}
+// 	if (push_swap->stack_a->content > ft_lstlast(push_swap->stack_a)->content)
+			
+// 			{
+// 				rotate_a(&push_swap->stack_a);
+// 				write(1, "ra\n", 3);
+// 			} 
+// 	else
+// 		push_a_b(push_swap);
+// }
 
 void	pivot_division_five(t_ps *push_swap)
 {
@@ -256,8 +315,10 @@ int	main(int argc, char **argv)
 	}
 	if (duplicates_checker(argc, argv))
 	{
-		creating_list(&push_swap->stack_a, argv);
+		creating_list(push_swap, argv);
 		lenlst = ft_lstsize(push_swap->stack_a);
+		ft_printf("max %i", push_swap->max);
+		ft_printf("min %i\n", push_swap->min);
 		push_swap->pivot_a = ft_lstlast(push_swap->stack_a)->content;
 		// ft_printf("List is:\n");
 		// printing_list_a(push_swap->stack_a);

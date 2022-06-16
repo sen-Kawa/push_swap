@@ -24,6 +24,8 @@ typedef struct push_swap
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int	pivot_a;
+	int	min;
+	int	max;
 	t_list	*pivot_b;
 }	t_ps;
 
@@ -33,9 +35,10 @@ int		numeric_checker(char *arg);
 int		duplicates_checker(int argc, char **argv);
 
 //handling list
-t_list	*creating_list(t_list **stack_a, char **argv);
+t_list	*creating_list(t_ps *push_swap, char **argv);
 void	printing_list_a(t_list *stack_a);
 void	printing_list_b(t_list *stack_b);
+
 
 //rotating
 void	rotate_a(t_list **stack);
@@ -63,7 +66,12 @@ void	push_b_a(t_ps *push_swap);
 
 //quicksort algorithm
 void	pivot_division_five(t_ps *push_swap);
-void	pivot_division_mid(t_ps *push_swap);
+void	pivot_division_mid(t_ps *push_swap, int half);
+void	bigger_than_median(t_ps *push_swap);
+// void	smaller_than_median(t_ps *push_swap);
+void	check_combined(t_ps *push_swap);
+
+
 //void	pivot_division_gran(t_ps *push_swap);
 void	quicksort(t_ps *push_swap);
 int	list_a_sorted(t_ps *push_swap, int lenlst);
