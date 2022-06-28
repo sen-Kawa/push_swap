@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/15 01:23:32 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/28 16:46:26 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct push_swap
 	t_list	*stack_b;
 	int	pivot_a;
 	int	min;
+	int	med;
 	int	max;
 	t_list	*pivot_b;
 }	t_ps;
@@ -64,11 +65,21 @@ void	freeing_list(t_list *stack_a);
 void	push_a_b(t_ps *push_swap);
 void	push_b_a(t_ps *push_swap);
 
-//quicksort algorithm
+//handling 5
 void	pivot_division_five(t_ps *push_swap);
+void	sorting_three(t_ps *push_swap);
+void	sorting_four(t_ps *push_swap);
+void	sorting_five(t_ps *push_swap);
+
+//array
+void	make_array(t_ps *push_swap);
+void	bubblesorting(int *stack_array, int size, t_ps *push_swap);
+
+//quicksort algorithm
 void	pivot_division_mid(t_ps *push_swap, int half, int median);
 void	bigger_than_median(t_ps *push_swap);
 void	smaller_than_median(t_ps *push_swap);
+
 // void	check_combined(t_ps *push_swap);
 void	partial_sorting(t_ps *push_swap, int half, int median);
 

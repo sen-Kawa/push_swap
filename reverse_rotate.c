@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/14 22:22:49 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/23 00:03:26 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	reverse_rotate_a(t_list **stack)
 	sec_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
+	ft_printf("rra\n");
 }
 
 void	reverse_rotate_b(t_list **stack)
