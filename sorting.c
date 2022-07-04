@@ -21,7 +21,7 @@ void	quicksort(t_ps *push_swap)
 	median = (push_swap->min + push_swap->max) / 2;
 	half = ft_lstsize(push_swap->stack_a) / 2;
 	// printing_list_a(push_swap->stack_a);
-	if (ft_lstsize(push_swap->stack_a) <= 3)
+	if (ft_lstsize(push_swap->stack_a) <= 5)
 		pivot_division_five(push_swap);
 	else if (ft_lstsize(push_swap->stack_a) <= 100)
 	{

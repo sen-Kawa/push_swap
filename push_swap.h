@@ -68,8 +68,8 @@ void	push_b_a(t_ps *push_swap);
 //handling 5
 void	pivot_division_five(t_ps *push_swap);
 void	sorting_three(t_ps *push_swap);
-void	sorting_four(t_ps *push_swap);
 void	sorting_five(t_ps *push_swap);
+int find_min(t_list *stack);
 
 //array
 void	make_array(t_ps *push_swap);

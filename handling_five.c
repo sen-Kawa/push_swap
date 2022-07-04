@@ -24,10 +24,10 @@ void	pivot_division_five(t_ps *push_swap)
 			swap_nodes_a(push_swap->stack_a);
 		else if (size == 3)
 			sorting_three(push_swap);
-		// else if (size == 4)
-		// 	sorting_four(push_swap);
-		// else if (size == 5)
-		// 	sorting_five(push_swap);
+		else if (size == 4)
+			sorting_five(push_swap);
+		else if (size == 5)
+			sorting_five(push_swap);
 	}
 }
 
@@ -40,6 +40,8 @@ void	sorting_three(t_ps *push_swap)
 	first = push_swap->stack_a->content;
 	second = push_swap->stack_a->next->content;
 	last = ft_lstlast(push_swap->stack_a)->content;
+	if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+		return ;
 	if (first > second && second > last)
 	{
 		swap_nodes_a(push_swap->stack_a);
@@ -59,53 +61,39 @@ void	sorting_three(t_ps *push_swap)
 		rotate_a(&push_swap->stack_a);
 }
 
-// void	sorting_four(t_ps *push_swap)
-// {
-// 	int	first;
-// //	int	second;
-// //	int	last;
-// 	int	count_pushedb;
-// //	int	stack_size;
+void	sorting_five(t_ps *push_swap)
+{
+	int lstsize;
+
+	lstsize = ft_lstsize(push_swap->stack_a);
 	
-// //	second = push_swap->stack_a->next->content;
-// //	last = ft_lstlast(push_swap->stack_a)->content;
-// 	count_pushedb = 0;
-// //	stack_size = ft_lstsize(push_swap->stack_a);
-// 	make_array(push_swap);
-// 	ft_printf("min %i, med %i, max %i\n", push_swap->min, push_swap->med, push_swap->max);
-// //	while (count_pushedb < stack_size)
-// 	while (push_swap->stack_a)
-// 	{
-// 		first = push_swap->stack_a->content;
-// 		if (first < push_swap->med)
-// 		{
-// 			push_a_b(push_swap);
-// 			count_pushedb++;
-// 		}
-// 		else if (first > push_swap->med)
-// 		{
-// 			rotate_a(&push_swap->stack_a);
-// 		}
-// 		else if (first == push_swap->med)
-// 		{
-// 			swap_nodes_a(push_swap->stack_a);
-// 		}
+	while (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+	{
+		while (ft_lstsize(push_swap->stack_a) > 3)
+		{
+			if (push_swap->stack_a->content == find_min(push_swap->stack_a))
+				push_a_b(push_swap);
+			else
+				rotate_a(&push_swap->stack_a);
+	// 			printing_list_a(push_swap->stack_a);
+	// printing_list_b(push_swap->stack_b);
+		}
+		sorting_three(push_swap);
+		push_b_a(push_swap);
+		push_b_a(push_swap);
+	}
+}
 
-// 	}
-// /*	while (ft_lstsize(push_swap->stack_a) > 2)
-// 	{
-// 		if (first > second && first < last)
-// 			swap_nodes_a(push_swap->stack_a);
-// 		if (first < second && first < last)
-// 		{
-// 			push_a_b(push_swap);
-// 			if (ft_lstsize(push_swap->stack_b) >= 2 && push_swap->stack_b->content < push_swap->stack_b->next->content)
-// 				swap_nodes_b(push_swap->stack_b);
-// 		}
-// 	}*/
-// }
+int find_min(t_list *stack)
+{
+	int		min;
 
-// void	sorting_five(t_ps *push_swap)
-// {
-// 	ft_printf("size of list in sortin five is %i\n", ft_lstsize(push_swap->stack_a));
-// }
+	min = MAX_INT;
+	while (stack != NULL)
+	{
+		if (min > stack->content)
+			min = stack->content;
+		stack = stack->next;
+	}
+	return (min);
+}
