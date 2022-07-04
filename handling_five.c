@@ -40,7 +40,7 @@ void	sorting_three(t_ps *push_swap)
 	first = push_swap->stack_a->content;
 	second = push_swap->stack_a->next->content;
 	last = ft_lstlast(push_swap->stack_a)->content;
-	if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+	if (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 		return ;
 	if (first > second && second > last)
 	{
@@ -63,10 +63,9 @@ void	sorting_three(t_ps *push_swap)
 
 void	sorting_five(t_ps *push_swap)
 {
-	int lstsize;
+	int		lstsize;
 
 	lstsize = ft_lstsize(push_swap->stack_a);
-	
 	while (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 	{
 		while (ft_lstsize(push_swap->stack_a) > 3)
@@ -75,8 +74,6 @@ void	sorting_five(t_ps *push_swap)
 				push_a_b(push_swap);
 			else
 				rotate_a(&push_swap->stack_a);
-	// 			printing_list_a(push_swap->stack_a);
-	// printing_list_b(push_swap->stack_b);
 		}
 		sorting_three(push_swap);
 		push_b_a(push_swap);
@@ -84,7 +81,7 @@ void	sorting_five(t_ps *push_swap)
 	}
 }
 
-int find_min(t_list *stack)
+int	find_min(t_list *stack)
 {
 	int		min;
 
