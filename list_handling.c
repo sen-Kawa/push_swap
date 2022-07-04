@@ -48,3 +48,21 @@ t_list	*creating_list(t_ps *push_swap, char **argv)
 	}
 	return (push_swap->stack_a);
 }
+
+void	freeing_list(t_list *stack_a)
+{
+	t_list	*temp;
+
+	while (stack_a != NULL)
+	{
+		temp = stack_a;
+		stack_a = stack_a->next;
+		free(temp);
+	}
+}
+
+void	init_push_swap(t_ps *push_swap)
+{
+	push_swap->stack_a = NULL;
+	push_swap->stack_b = NULL;
+}

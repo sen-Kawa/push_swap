@@ -20,19 +20,19 @@ void	quicksort(t_ps *push_swap)
 
 	median = (push_swap->min + push_swap->max) / 2;
 	half = ft_lstsize(push_swap->stack_a) / 2;
-	printing_list_a(push_swap->stack_a);
-	if (ft_lstsize(push_swap->stack_a) <= 5)
+	// printing_list_a(push_swap->stack_a);
+	if (ft_lstsize(push_swap->stack_a) <= 3)
 		pivot_division_five(push_swap);
 	else if (ft_lstsize(push_swap->stack_a) <= 100)
 	{
 		pivot_division_mid(push_swap, half, median);
-		printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+		// printing_list_a(push_swap->stack_a);
+	// printing_list_b(push_swap->stack_b);
 	// ft_printf("%i", median);
 		partial_sorting(push_swap, half, median);
 	}
-	printing_list_a(push_swap->stack_a);
-	printing_list_b(push_swap->stack_b);
+	// printing_list_a(push_swap->stack_a);
+	// printing_list_b(push_swap->stack_b);
 }
 
 void	pivot_division_mid(t_ps *push_swap, int half, int median)

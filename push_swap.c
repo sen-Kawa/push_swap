@@ -13,24 +13,6 @@
 
 #include "push_swap.h"
 
-void	freeing_list(t_list *stack_a)
-{
-	t_list	*temp;
-
-	while (stack_a != NULL)
-	{
-		temp = stack_a;
-		stack_a = stack_a->next;
-		free(temp);
-	}
-}
-
-void	init_push_swap(t_ps *push_swap)
-{
-	push_swap->stack_a = NULL;
-	push_swap->stack_b = NULL;
-}
-
 int	list_a_sorted(t_ps *push_swap, int lenlst)
 {
 	t_list	*temp;
@@ -85,7 +67,7 @@ int	main(int argc, char **argv)
 		return (0);
 	while (argv[i])
 	{
-		if (numeric_checker(argv[i]) && checker_minmax(atol(argv[i])))
+		if (numeric_checker(argv[i]) && checker_minmax(ft_atoi(argv[i])))
 			i++;
 	}
 	if (duplicates_checker(argc, argv))
