@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/28 23:51:00 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/06/29 15:42:47 by kaheinz          ###   ########.fr       */
 /*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -65,15 +65,16 @@ void	sorting_four(t_ps *push_swap)
 //	int	second;
 //	int	last;
 	int	count_pushedb;
-	int	stack_size;
+//	int	stack_size;
 	
 //	second = push_swap->stack_a->next->content;
 //	last = ft_lstlast(push_swap->stack_a)->content;
 	count_pushedb = 0;
-	stack_size = ft_lstsize(push_swap->stack_a);
+//	stack_size = ft_lstsize(push_swap->stack_a);
 	make_array(push_swap);
 	ft_printf("min %i, med %i, max %i\n", push_swap->min, push_swap->med, push_swap->max);
-	while (count_pushedb < stack_size / 2)
+//	while (count_pushedb < stack_size)
+	while (push_swap->stack_a)
 	{
 		first = push_swap->stack_a->content;
 		if (first < push_swap->med)
@@ -84,8 +85,12 @@ void	sorting_four(t_ps *push_swap)
 		else if (first > push_swap->med)
 		{
 			rotate_a(&push_swap->stack_a);
-			count_pushedb++;
 		}
+		else if (first == push_swap->med)
+		{
+			swap_nodes_a(push_swap->stack_a);
+		}
+
 	}
 /*	while (ft_lstsize(push_swap->stack_a) > 2)
 	{
