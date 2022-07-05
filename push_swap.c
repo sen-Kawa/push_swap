@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/22 17:27:45 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 14:24:33 by kaheinz          ###   ########.fr       */
 /*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 		// ft_printf("List is:\n");
 		// printing_list_a(push_swap->stack_a);
 		if (!list_a_sorted(push_swap, lenlst))
-			quicksort(push_swap);
+			sort(push_swap);
 	}
 	freeing_list(push_swap->stack_a);
 	free(push_swap);

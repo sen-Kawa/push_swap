@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/28 16:46:26 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 15:46:07 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ typedef struct push_swap
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int	pivot_a;
-	int	min;
-	int	med;
-	int	max;
+	int		pivot_a;
+	int		min;
+	int		med;
+	int		max;
 	t_list	*pivot_b;
 }	t_ps;
 
@@ -39,7 +39,8 @@ int		duplicates_checker(int argc, char **argv);
 t_list	*creating_list(t_ps *push_swap, char **argv);
 void	printing_list_a(t_list *stack_a);
 void	printing_list_b(t_list *stack_b);
-
+int		list_a_sorted(t_ps *push_swap, int lenlst);
+int		list_b_sorted(t_ps *push_swap, int lenlst);
 
 //rotating
 void	rotate_a(t_list **stack);
@@ -66,25 +67,18 @@ void	push_a_b(t_ps *push_swap);
 void	push_b_a(t_ps *push_swap);
 
 //handling 5
-void	pivot_division_five(t_ps *push_swap);
+void	division_five(t_ps *push_swap);
 void	sorting_three(t_ps *push_swap);
 void	sorting_five(t_ps *push_swap);
-int find_min(t_list *stack);
+int		find_min(t_list *stack);
 
 //array
-void	make_array(t_ps *push_swap);
+int		*make_array(t_ps *push_swap);
 void	bubblesorting(int *stack_array, int size, t_ps *push_swap);
 
-//quicksort algorithm
-void	pivot_division_mid(t_ps *push_swap, int half, int median);
-void	bigger_than_median(t_ps *push_swap);
-void	smaller_than_median(t_ps *push_swap);
-
-void	partial_sorting(t_ps *push_swap, int half, int median);
-
-//void	pivot_division_gran(t_ps *push_swap);
-void	quicksort(t_ps *push_swap);
-int	list_a_sorted(t_ps *push_swap, int lenlst);
-int	list_b_sorted(t_ps *push_swap, int lenlst);
+//radix algorithm
+void	sort(t_ps *push_swap);
+void	indexing(t_ps *push_swap);
+void	sorting_plusfive(t_ps *push_swap);
 
 #endif

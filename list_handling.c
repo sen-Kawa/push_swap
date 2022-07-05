@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/28 16:39:16 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 15:15:28 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	printing_list_a(t_list *stack_a)
 	while (stack_a)
 	{
 		ft_printf("Node: %i\n", stack_a->content);
+		ft_printf("Index: %i\n", stack_a->index);
 		stack_a = stack_a->next;
 	}
 	ft_printf("___\n");
