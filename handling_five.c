@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/06/29 15:42:47 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 12:53:30 by kaheinz          ###   ########.fr       */
 /*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -36,11 +36,37 @@ void	sorting_three(t_ps *push_swap)
 	int	first;
 	int	second;
 	int	last;
+	t_list	*temp;
+
+	while (!list_a_sorted(push_swap, 3))
+	{
+		temp = push_swap->stack_a;
+		first = temp->content;
+		second = temp->next->content;
+		last = temp->next->next->content;
+		if (first > second && first > last && last > second)
+		{
+			rotate_a(&push_swap->stack_a);
+			return ;
+		}
+		if (push_swap->stack_a->content > push_swap->stack_a->next->content)
+			swap_nodes_a(push_swap->stack_a);
+		else
+			reverse_rotate_a(&push_swap->stack_a);
+
+	}
+}
+/*
+void	sorting_three(t_ps *push_swap)
+{
+	int	first;
+	int	second;
+	int	last;
 
 	first = push_swap->stack_a->content;
 	second = push_swap->stack_a->next->content;
 	last = ft_lstlast(push_swap->stack_a)->content;
-	if (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
+	if (list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 		return ;
 	if (first > second && second > last)
 	{
@@ -59,13 +85,10 @@ void	sorting_three(t_ps *push_swap)
 		swap_nodes_a(push_swap->stack_a);
 	else if (first > second && second < last)
 		rotate_a(&push_swap->stack_a);
-}
+}*/
 
 void	sorting_five(t_ps *push_swap)
 {
-	int		lstsize;
-
-	lstsize = ft_lstsize(push_swap->stack_a);
 	while (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 	{
 		while (ft_lstsize(push_swap->stack_a) > 3)
