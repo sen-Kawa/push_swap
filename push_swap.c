@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:33:24 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/05 14:24:33 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 16:12:44 by kaheinz          ###   ########.fr       */
 /*   Updated: 2022/06/15 12:50:57 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -16,7 +16,7 @@
 int	list_a_sorted(t_ps *push_swap, int lenlst)
 {
 	t_list	*temp;
-	int	i;
+	int		i;
 
 	i = 0;
 	temp = push_swap->stack_a;
@@ -32,11 +32,10 @@ int	list_a_sorted(t_ps *push_swap, int lenlst)
 		return (0);
 }
 
-
 int	list_b_sorted(t_ps *push_swap, int lenlst)
 {
 	t_list	*temp;
-	int	i;
+	int		i;
 
 	i = 0;
 	temp = push_swap->stack_b;
@@ -55,7 +54,6 @@ int	list_b_sorted(t_ps *push_swap, int lenlst)
 int	main(int argc, char **argv)
 {
 	int		i;
-	int		lenlst;
 	t_ps	*push_swap;
 
 	push_swap = malloc(sizeof(t_ps));
@@ -73,11 +71,7 @@ int	main(int argc, char **argv)
 	if (duplicates_checker(argc, argv))
 	{
 		creating_list(push_swap, argv);
-		lenlst = ft_lstsize(push_swap->stack_a);
-		push_swap->pivot_a = ft_lstlast(push_swap->stack_a)->content;
-		// ft_printf("List is:\n");
-		// printing_list_a(push_swap->stack_a);
-		if (!list_a_sorted(push_swap, lenlst))
+		if (!list_a_sorted(push_swap, ft_lstsize(push_swap->stack_a)))
 			sort(push_swap);
 	}
 	freeing_list(push_swap->stack_a);

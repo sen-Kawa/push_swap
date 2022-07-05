@@ -6,7 +6,7 @@
 /*   By: kaheinz <kaheinz@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:12:08 by kaheinz           #+#    #+#             */
-/*   Updated: 2022/07/05 15:46:07 by kaheinz          ###   ########.fr       */
+/*   Updated: 2022/07/05 16:31:46 by kaheinz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	bubblesorting(int *stack_array, int size, t_ps *push_swap);
 //radix algorithm
 void	sort(t_ps *push_swap);
 void	indexing(t_ps *push_swap);
-void	sorting_plusfive(t_ps *push_swap);
+void	sorting_plusfive(t_ps *push_swap, int size);
 
 #endif
